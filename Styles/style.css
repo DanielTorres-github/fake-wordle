@@ -30,8 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(5, 204, 32, 0.733);
-  border: solid 2px rgba(5, 204, 32, 0.733);
+  background-color: #6AAA64;
 }
 .cuadroLetraPosicion {
   width: 62px;
@@ -39,8 +38,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(230, 207, 9, 0.514);
-  border: solid 2px rgba(230, 207, 9, 0.514);
+  background-color: #C9B458;
 }
 .cuadroLetraIncorrecta {
   width: 62px;
@@ -48,13 +46,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.418);
-  border: solid 2px rgba(255, 255, 255, 0.418);
+  background-color: #3A3A3C;
+  /* border: solid 2px rgba(255, 255, 255, 0); */
 }
 .btnLetra {
   height: 56px;
   width: auto;
   background-color: rgba(255, 255, 255, 0.418);
+}
+.btnLetraCorrecta {
+  height: 56px;
+  width: auto;
+  background-color: #6AAA64;
+}
+.btnLetraIncorrecta {
+  height: 56px;
+  width: auto;
+  background-color: #3A3A3C;
 }
 #borrar {
   display: flex;

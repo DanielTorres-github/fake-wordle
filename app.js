@@ -7,7 +7,6 @@ const zxc = "zxcvbnm";
 let palabraArray;
 let letrasIngresadas = [];
 let position = [0, 0];
-let arrayPosition = [];
 
 inciar();
 
@@ -186,6 +185,7 @@ function chequearPalabra() {
       if (palabraArray.includes(letrasIngresadas[i])) {
         if (palabraArray[i] === letrasIngresadas[i]) {
           position[1] = i;
+          cambiarBtnLetra(`${letrasIngresadas[i]}`, "Correcta");
           cambiarColor(position.join(""), "Correcta");
         } else {
           position[1] = i;
@@ -195,6 +195,9 @@ function chequearPalabra() {
           );
         }
       } else {
+        position[1] = i;
+        cambiarBtnLetra(`${letrasIngresadas[i]}`, "Incorrecta");
+        cambiarColor(position.join(""), "Incorrecta");
         console.log(letrasIngresadas[i] + " no pertence");
       }
     }
@@ -206,10 +209,26 @@ function chequearPalabra() {
 }
 
 function cambiarColor(ubicacion, opcion) {
-  console.log(palabraArray);
-  console.log(letrasIngresadas);
-  console.log("esta es la ubicacion de la letra: " + ubicacion);
   const cuadro = document.querySelector(`.cuadroLetra${ubicacion}`);
-  cuadro.setAttribute("class", `text-white text-center uppercase text-5xl cuadroLetra${opcion}`);
-  // cuadro.removeAttribute(`.cuadroLetra${ubicacion}`)
+  cuadro.setAttribute(
+    "class",
+    `text-white text-center uppercase text-5xl cuadroLetra${opcion}`
+  );
+}
+
+function cambiarBtnLetra(letra, opcion) {
+  if (opcion != "Incorrecta") {
+    const btn = document.querySelector(`.btnLetra${letra}`);
+    btn.setAttribute(
+      "class",
+      `btnLetra btnLetra${opcion} uppercase text-white rounded-md p-4`
+    );
+  } else {
+    const btn = document.querySelector(`.btnLetra${letra}`);
+    btn.removeAttribute("onclick")
+    btn.setAttribute(
+      "class",
+      `btnLetra btnLetra${opcion} uppercase text-white rounded-md p-4`
+    );
+  }
 }
