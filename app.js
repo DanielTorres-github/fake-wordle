@@ -5,12 +5,12 @@ const qwe = "qwertyuiop";
 const asd = "asdfghjklñ";
 const zxc = "zxcvbnm";
 let palabraArray;
-const letrasIngresadas = [];
+let letrasIngresadas = [];
 let position = [0, 0];
 inciar();
 
 function inciar() {
-  // palabraRandom();
+  palabraRandom();
   generarCuadro();
   generarTeclado();
 }
@@ -157,19 +157,39 @@ function generarTeclado() {
 function pushLetra(letra) {
   if (letrasIngresadas.length < 5) {
     let print = document.querySelector(`.cuadroLetra${position.join("")}`);
-    position[1]++;
     print.textContent = `${letra}`;
+    position[1]++;
     letrasIngresadas.push(letra);
     console.log(letrasIngresadas);
   }
 }
 
 function borrarLetra() {
+  position[1]--;
+  let print = document.querySelector(`.cuadroLetra${position.join("")}`);
+  print.textContent = ``;
   letrasIngresadas.pop();
-  console.log(x);
   console.log(letrasIngresadas);
 }
 
 function chequearPalabra() {
-  
+  if (letrasIngresadas.length != 5) {
+    console.log("faltan letras");
+  } else if (
+    JSON.stringify(letrasIngresadas) === JSON.stringify(palabraArray)
+  ) {
+    console.log("Ganaste");
+  } else {
+    for (i = 0; i < letrasIngresadas.length; i++) {
+      if (palabraArray.includes(letrasIngresadas[i])) {
+        console.log(letrasIngresadas[i] + " pertence");
+      } else {
+        console.log(letrasIngresadas[i] + " no pertence");
+      }
+    }
+    letrasIngresadas = [];
+    position[0]++;
+    position[1] = 0;
+    console.log(position);
+  }
 }

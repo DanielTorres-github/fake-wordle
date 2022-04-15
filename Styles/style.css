@@ -24,6 +24,33 @@ body {
   justify-content: center;
   border: solid 2px rgba(255, 255, 255, 0.178);
 }
+.cuadroLetraCorrecta {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(5, 204, 32, 0.733);
+  border: solid 2px rgba(5, 204, 32, 0.733);
+}
+.cuadroLetraPosicion {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(230, 207, 9, 0.514);
+  border: solid 2px rgba(230, 207, 9, 0.514);
+}
+.cuadroLetraIncorrecta {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.418);
+  border: solid 2px rgba(255, 255, 255, 0.418);
+}
 .btnLetra {
   height: 56px;
   width: auto;
