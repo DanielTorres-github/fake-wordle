@@ -11,8 +11,8 @@ let position = [0, 0];
 inciar();
 
 function inciar() {
+  palabra.textContent = "CARGANDO PALABRA...";
   palabraRandom();
-  generarCuadro();
   generarTeclado();
 }
 
@@ -24,7 +24,11 @@ function palabraRandom() {
       palabraArray = [...data.body.Word];
       if (palabraArray.length != 5) {
         cambiarPalabra();
+      } else {
+        palabra.textContent = "";
+        generarCuadro();
       }
+
       for (i = 0; i <= palabraArray.length; i++) {
         switch (palabraArray[i]) {
           case "á":
@@ -44,7 +48,6 @@ function palabraRandom() {
             break;
         }
       }
-      console.log(palabraArray);
     });
 }
 
@@ -161,25 +164,24 @@ function pushLetra(letra) {
     print.textContent = `${letra}`;
     position[1]++;
     letrasIngresadas.push(letra);
-    console.log(letrasIngresadas);
   }
 }
 
 function borrarLetra() {
-  position[1]--;
-  let print = document.querySelector(`.cuadroLetra${position.join("")}`);
-  print.textContent = ``;
-  letrasIngresadas.pop();
-  console.log(letrasIngresadas);
+  if (letrasIngresadas.length != 0) {
+    position[1]--;
+    let print = document.querySelector(`.cuadroLetra${position.join("")}`);
+    print.textContent = ``;
+    letrasIngresadas.pop();
+  }
 }
 
 function chequearPalabra() {
   if (letrasIngresadas.length != 5) {
-    console.log("faltan letras");
   } else if (
     JSON.stringify(letrasIngresadas) === JSON.stringify(palabraArray)
   ) {
-    console.log("Ganaste");
+    cambiarColor(position.join(""), "Correcta");
   } else {
     for (i = 0; i < letrasIngresadas.length; i++) {
       if (palabraArray.includes(letrasIngresadas[i])) {
@@ -190,21 +192,21 @@ function chequearPalabra() {
         } else {
           position[1] = i;
           cambiarColor(position.join(""), "Posicion");
-          console.log(
-            letrasIngresadas[i] + " pertence pero no en esta posicion"
-          );
         }
       } else {
         position[1] = i;
-        cambiarBtnLetra(`${letrasIngresadas[i]}`, "Incorrecta");
         cambiarColor(position.join(""), "Incorrecta");
-        console.log(letrasIngresadas[i] + " no pertence");
+        cambiarBtnLetra(`${letrasIngresadas[i]}`, "Incorrecta");
       }
     }
     letrasIngresadas = [];
     position[0]++;
     position[1] = 0;
-    console.log(position);
+  }
+  if (position[0] === 6) {
+    swal.fire(
+      `PERDISTE\nLA PALABRA ERA "${palabraArray.join("").toUpperCase()}"`
+    );
   }
 }
 
@@ -221,14 +223,14 @@ function cambiarBtnLetra(letra, opcion) {
     const btn = document.querySelector(`.btnLetra${letra}`);
     btn.setAttribute(
       "class",
-      `btnLetra btnLetra${opcion} uppercase text-white rounded-md p-4`
+      `btnLetra btnLetra${letra} btnLetra${opcion} uppercase text-white rounded-md p-4`
     );
   } else {
     const btn = document.querySelector(`.btnLetra${letra}`);
-    btn.removeAttribute("onclick")
+    btn.removeAttribute("onclick");
     btn.setAttribute(
       "class",
-      `btnLetra btnLetra${opcion} uppercase text-white rounded-md p-4`
+      `btnLetra btnLetra${letra} btnLetra${opcion} uppercase text-white rounded-md p-4`
     );
   }
 }
