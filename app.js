@@ -7,6 +7,8 @@ const zxc = "zxcvbnm";
 let palabraArray;
 let letrasIngresadas = [];
 let position = [0, 0];
+let arrayPosition = [];
+
 inciar();
 
 function inciar() {
@@ -182,7 +184,16 @@ function chequearPalabra() {
   } else {
     for (i = 0; i < letrasIngresadas.length; i++) {
       if (palabraArray.includes(letrasIngresadas[i])) {
-        console.log(letrasIngresadas[i] + " pertence");
+        if (palabraArray[i] === letrasIngresadas[i]) {
+          position[1] = i;
+          cambiarColor(position.join(""), "Correcta");
+        } else {
+          position[1] = i;
+          cambiarColor(position.join(""), "Posicion");
+          console.log(
+            letrasIngresadas[i] + " pertence pero no en esta posicion"
+          );
+        }
       } else {
         console.log(letrasIngresadas[i] + " no pertence");
       }
@@ -192,4 +203,13 @@ function chequearPalabra() {
     position[1] = 0;
     console.log(position);
   }
+}
+
+function cambiarColor(ubicacion, opcion) {
+  console.log(palabraArray);
+  console.log(letrasIngresadas);
+  console.log("esta es la ubicacion de la letra: " + ubicacion);
+  const cuadro = document.querySelector(`.cuadroLetra${ubicacion}`);
+  cuadro.setAttribute("class", `text-white text-center uppercase text-5xl cuadroLetra${opcion}`);
+  // cuadro.removeAttribute(`.cuadroLetra${ubicacion}`)
 }
