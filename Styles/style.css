@@ -1,0 +1,35 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(31, 30, 30);
+  font-family: "cabin";
+  box-sizing: border-box;
+}
+.cuerpo {
+  width: 750px;
+  height: 100vh;
+}
+#juego {
+  margin-top: 10%;
+}
+#stats {
+  width: 100%;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.178);
+}
+.cuadroLetra {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px rgba(255, 255, 255, 0.178);
+}
+.btnLetra {
+  height: 56px;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.418);
+}
+#borrar {
+  display: flex;
+  justify-content: center;
+}
