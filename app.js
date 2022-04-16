@@ -66,7 +66,7 @@ function generarCuadro() {
       const p = document.createElement("p");
       p.setAttribute(
         "class",
-        `text-white text-center uppercase text-5xl cuadroLetra${i}${a}`
+        `text-white text-center uppercase text-5xl ubicacion${i}${a}`
       );
       columna.appendChild(p);
       fila.appendChild(columna);
@@ -160,7 +160,7 @@ function generarTeclado() {
 
 function pushLetra(letra) {
   if (letrasIngresadas.length < 5) {
-    let print = document.querySelector(`.cuadroLetra${position.join("")}`);
+    let print = document.querySelector(`.ubicacion${position.join("")}`);
     print.textContent = `${letra}`;
     position[1]++;
     letrasIngresadas.push(letra);
@@ -170,18 +170,21 @@ function pushLetra(letra) {
 function borrarLetra() {
   if (letrasIngresadas.length != 0) {
     position[1]--;
-    let print = document.querySelector(`.cuadroLetra${position.join("")}`);
+    let print = document.querySelector(`.ubicacion${position.join("")}`);
     print.textContent = ``;
     letrasIngresadas.pop();
   }
 }
-
 function chequearPalabra() {
   if (letrasIngresadas.length != 5) {
   } else if (
     JSON.stringify(letrasIngresadas) === JSON.stringify(palabraArray)
-  ) {
-    cambiarColor(position.join(""), "Correcta");
+    ) {
+    swal.fire("GANASTE!");
+    for (i = 0; i < letrasIngresadas.length; i++) {
+      position[1] = i;
+      cambiarColor(position.join(""), "Correcta");
+    }
   } else {
     for (i = 0; i < letrasIngresadas.length; i++) {
       if (palabraArray.includes(letrasIngresadas[i])) {
@@ -211,10 +214,10 @@ function chequearPalabra() {
 }
 
 function cambiarColor(ubicacion, opcion) {
-  const cuadro = document.querySelector(`.cuadroLetra${ubicacion}`);
+  const cuadro = document.querySelector(`.ubicacion${ubicacion}`);
   cuadro.setAttribute(
     "class",
-    `text-white text-center uppercase text-5xl cuadroLetra${opcion}`
+    `text-white text-center uppercase text-5xl ubicacion${ubicacion} cuadroLetra${opcion}`
   );
 }
 
