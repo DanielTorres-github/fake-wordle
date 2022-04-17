@@ -48,7 +48,6 @@ function palabraRandom() {
             break;
         }
       }
-      console.log(palabraArray)
     });
 }
 
