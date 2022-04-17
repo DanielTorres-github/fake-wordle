@@ -48,6 +48,7 @@ function palabraRandom() {
             break;
         }
       }
+      console.log(palabraArray)
     });
 }
 
@@ -230,7 +231,6 @@ function cambiarBtnLetra(letra, opcion) {
     );
   } else {
     const btn = document.querySelector(`.btnLetra${letra}`);
-    btn.removeAttribute("onclick");
     btn.setAttribute(
       "class",
       `btnLetra btnLetra${letra} btnLetra${opcion} uppercase text-white rounded-md p-4`
