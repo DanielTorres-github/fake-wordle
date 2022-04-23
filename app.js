@@ -175,6 +175,7 @@ function borrarLetra() {
     letrasIngresadas.pop();
   }
 }
+
 function chequearPalabra() {
   if (letrasIngresadas.length != 5) {
   } else if (
