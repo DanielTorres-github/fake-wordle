@@ -84,11 +84,9 @@ function generarTeclado() {
 
   const segundaLinea = document.createElement("div");
   segundaLinea.setAttribute("class", "w-full m-2 gap-2 flex justify-center");
-  keyboard.appendChild(segundaLinea);
 
   const terceraLinea = document.createElement("div");
   terceraLinea.setAttribute("class", "w-full m-2 gap-2 flex justify-center");
-  keyboard.appendChild(terceraLinea);
 
   keyboard.appendChild(primerLinea);
   keyboard.appendChild(segundaLinea);
@@ -180,7 +178,7 @@ function chequearPalabra() {
   if (letrasIngresadas.length != 5) {
   } else if (
     JSON.stringify(letrasIngresadas) === JSON.stringify(palabraArray)
-    ) {
+  ) {
     swal.fire("GANASTE!");
     for (i = 0; i < letrasIngresadas.length; i++) {
       position[1] = i;
